@@ -49,10 +49,10 @@ $('#drugChoice').on("click", function(event){
   }).done(function(resp){
     console.log('hi');
     console.log(resp);
-    // var divInteractions = $('<div class="drugInteractions col-md-12">');
-    // divInteractions.append("<h2>" + data + "</h2");
-    // divInteractions.append('</div>');
-    // $('.interactionsResults').append(divInteractions);
+    var divInteractions = $('<div class="drugInteractions col-md-12">');
+    // divInteractions.append("<h2> this is a test</h2");
+    divInteractions.append('</div>');
+    $('.InteractionsResults').append(divInteractions);
   });
 });
 
