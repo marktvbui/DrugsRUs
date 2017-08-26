@@ -7,6 +7,7 @@ $('#drug-submit').on("click", function(event){
   var input = $('#drug');
   var med = $(input).val();
   var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
+
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -16,9 +17,9 @@ $('#drug-submit').on("click", function(event){
       var Indication = response.results[0].indications_and_usage[0];
       searchArray.push({'brand': brand, 'generic': generic, 'Indication': Indication});
       var div1 = $('<div class="test2 col-md-6">');
-      div1.append("<h2>" + brand + "</h2>");
-      div1.append("<h5>" + generic + "</h5>");
-      div1.append("<h5>" + Indication + "</h5>");
+      div1.append("<h2>Brand Name: " + brand + "</h2>");
+      div1.append("<h4>Generic Name: " + generic + "</h4>");
+      div1.append("<h4>Indications: " + Indication + "</h4>");
       // div1.append("<h2>" + brand + "</h2> <br>");s
       div1.append($('</div>'));
       $('.test1').append(div1);
@@ -39,7 +40,11 @@ $('#drugChoice').on("click", function(event){
     method: "GET",
     dataType: 'text',
     cache: false,
-    async: true
+    async: true,
+    error : function(request,error)
+    {
+      alert("Request: "+JSON.stringify(request));
+    }
     // , data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand}
   }).done(function(resp){
     console.log('hi');
