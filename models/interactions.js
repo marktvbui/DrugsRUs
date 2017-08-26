@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       med2_name: DataTypes.STRING(500),
       interaction: DataTypes.STRING(2000)
     });
+
     Interactions.associate = function(models) {
     Interactions.belongsTo(models.User, {
      foreignKey: {

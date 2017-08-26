@@ -19,17 +19,11 @@
   },
   "homepage": "https://github.com/marktvbui/DrugsRUs#readme",
   "dependencies": {
-<<<<<<< HEAD
     "2": "^1.0.0",
-    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
-=======
     "body-parser": "^1.17.2",
-    "express": "^4.15.4",
-    "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.10",
->>>>>>> fcfd74e178775262f856335dc4217d67040173c2
     "method-override": "^2.3.9",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.1",

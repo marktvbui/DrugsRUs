@@ -20,17 +20,18 @@ $('#drug-submit').on("click", function(event){
       $("#drug").val('');
   });
     $("#drugChoice").show();
-    // displayInfo();
 
 });
 
 $('#drugChoice').on("click", function(event){
   console.log('you clicked me');
-
+  var last = searchArray.length - 1;
+  var next = searchArray.length -2;
   event.preventDefault();
+  $('.drugInteractions').empty();
   $.ajax({
     // data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand},
-    url: '/interactions?med1_name=' + searchArray[0].brand + "&med2_name=" + searchArray[1].brand,
+    url: '/interactions?med1_name=' + searchArray[last].brand + "&med2_name=" + searchArray[next].brand,
      // url: '/interactions',
     method: "GET",
     cache: false,
@@ -41,7 +42,6 @@ $('#drugChoice').on("click", function(event){
     }
   }).done(function(resp){
     console.log(resp);
-    $('.drugInteractions').empty();
     var divInteractions = $('<div class="drugInteractions container ">');
     divInteractions.html("<h3>Interactions: "+ resp + "</h3");
     divInteractions.append('</div>');
@@ -59,7 +59,6 @@ function displayInfo() {
   div1.append("<h2>Brand Name: " + searchArray[last].brand + "</h2>");
   div1.append("<h4>Generic Name: " + searchArray[last].generic + "</h4>");
   div1.append("<h4>Indications: " + searchArray[last].Indication + "</h4>");
-  // div1.append("<h2>" + brand + "</h2> <br>");s
   div1.append($('</div>'));
   $("#drug").val('');
   $('.test1').append(div1);
@@ -68,7 +67,6 @@ function displayInfo() {
   div1.append("<h2>Brand Name: " + searchArray[next].brand + "</h2>");
   div1.append("<h4>Generic Name: " + searchArray[next].generic + "</h4>");
   div1.append("<h4>Indications: " + searchArray[next].Indication + "</h4>");
-  // div1.append("<h2>" + brand + "</h2> <br>");s
   div1.append($('</div>'));
   $('.test1').append(div1);
   $("#drug").val('');
