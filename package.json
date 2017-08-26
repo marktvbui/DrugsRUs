@@ -19,10 +19,9 @@
   },
   "homepage": "https://github.com/marktvbui/DrugsRUs#readme",
   "dependencies": {
-    "2": "^1.0.0",
+    "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
-    "body-parser": "^1.17.2",
     "handlebars": "^4.0.10",
     "method-override": "^2.3.9",
     "mysql": "^2.14.1",
@@ -30,4 +29,6 @@
     "sequelize": "^4.6.0"
   },
   "devDependencies": {}
+}
+ependencies": {}
 }
