@@ -11,22 +11,17 @@ module.exports = function(app) {
         med2_name: med2
       }
     }).then(function(results) {
-      console.log('****************');
-      console.log(results);
       console.log('++++++++++++++++++++++++');
-      console.log(results.interactions);
+      console.log(results[0].dataValues.interaction);
       // return interactionsResult;
-      // var interactions = {
-      //   interactionResults: results.interactions
-      // };
-      // return interactionsResult;
-      // db.Medicine.findAll({}).then(function(results){
-      //   console.log(results);
-      //   var hbsObject = {
-      //   Medicine: results
-      // };
-        // res.render('user', interactions); this works to send the user info over
-        // res.render('/', interactions);
+      var interactionsResult;
+      var interactions = {
+        interactionsResult: results
+      };
+      console.log('------------------------');
+      console.log(interactions);
+
+        res.render('index', interactions);
     });
   });
 };
