@@ -50,10 +50,10 @@ $('#drugChoice').on("click", function(event){
     url: '/interactions',
     method: "GET",
     async: false
-    , data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand}
+    // , data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand}
   }).done(function(data){
     console.log('hi');
-    console.log(data.User.datavalues.Interactions);
+    // console.log(data.User.datavalues.Interactions);
     // var divInteractions = $('<div class="drugInteractions col-md-12">');
     // divInteractions.append("<h2>" + data + "</h2");
     // divInteractions.append('</div>');
