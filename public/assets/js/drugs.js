@@ -1,29 +1,31 @@
-var type = 'brand_name:' //change this to either brand_name or generic_name depending on the searchto be performed.
-var med = 'Tylenol'; //this is the term (brand or generic) to be searched
-var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
-
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).done(function(response) {
-  // console.log(response);
-  console.log("Brand: " + response.results[0].openfda.brand_name[0]);
-  console.log("Generic: " + response.results[0].openfda.generic_name[0]);
-  // console.log("Description: " + response.results[0].description[0]);
-  // console.log("Interactions: " + response.results[0].drug_interactions[0]);
-  console.log("Indication: " + response.results[0].indications_and_usage[0]);
-});
-
 //input drug #1 into search bar and append API info to first column
 $('#drug-submit').on("click", function(event){
   event.preventDefault();
-
-  // var text = "";
+  // var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
+  var type = 'brand_name:';
+  // console.log(queryURL);
   var input = $('#drug');
-  var textLocation = $(input).val();
+  var searchTerm = $(input).val();
+  var med = searchTerm;
+  var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).done(function(response) {
+    // console.log(response);
+    console.log("Brand: " + response.results[0].openfda.brand_name[0]);
+    console.log("Generic: " + response.results[0].openfda.generic_name[0]);
+    // console.log("Description: " + response.results[0].description[0]);
+    // console.log("Interactions: " + response.results[0].drug_interactions[0]);
+    console.log("Indication: " + response.results[0].indications_and_usage[0]);
+  });
+  // var text = "";
+  // var input = $('#drug');
+  // var textLocation = $(input).val();
 
   var div1 = $('<div class="test2 col-md-6">');
-  div1.append("<h2>" + textLocation + "</h2>");
+  div1.append("<h2>" + med + "</h2>");
   div1.append($('</div>'));
   $('.test1').append(div1);
   $("#drug").val();
@@ -66,3 +68,5 @@ $('#drugChoice').on("click", function(event){
     // $("#drugChoice").show();
     // $("#druginteractions").append($(#interaction))
 });
+
+// $("#drug-submit").
