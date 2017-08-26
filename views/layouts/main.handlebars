@@ -39,7 +39,6 @@
         // $(".g-signin2").hide();
         $(".g-signout").show();
     });
-
     function reset() {
         $("#toggleCSS").attr("href", "../themes/alertify.default.css");
         alertify.set({
@@ -52,7 +51,6 @@
             buttonFocus: "ok"
         });
     }
-
     // Custom Properties
     $("#drug-submit").on('click', function() {
         reset();
@@ -62,7 +60,6 @@
         alertify.log("Searching for Drug . . .");
         return false;
     });
-
     $("#drugChoice").on('click', function() {
         reset();
         alertify.set({
@@ -71,7 +68,6 @@
         alertify.log("Comparing drug interactions :D");
         return false;
     });
-
     // var type = 'brand_name:' //change this to either brand_name or generic_name depending on the searchto be performed.
     // var med = 'Tylenol'; //this is the term (brand or generic) to be searched
     // var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
@@ -88,20 +84,16 @@
     //   // console.log("Interactions: " + response.results[0].drug_interactions[0]);
     //   console.log("Indication: " + response.results[0].indications_and_usage[0]);
     // });
-
-
-    // below code is server side authentication for user
-    // var xhr = new XMLHttpRequest();
-    // xhr.open('POST', '/');
-    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    // xhr.onload = function() {
-    // console.log('Signed in as: ' + xhr.responseText);
-    // };
-    // console.log(xhr);
-    // xhr.send('idtoken=' + id_token + 'name=' + name + 'email=' + email);
+  //   // below code is server side authentication for user
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open('POST', '/');
+  //   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  //   xhr.onload = function() {
+  //   console.log('Signed in as: ' + xhr.responseText);
+  //   };
+  //   console.log(xhr);
+  //   xhr.send('idtoken=' + id_token + 'name=' + name + 'email=' + email);
   // }
-
-
   // function signOut() {
   //   var auth2 = gapi.auth2.getAuthInstance();
   //   auth2.signOut().then(function() {
