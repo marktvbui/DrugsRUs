@@ -23,7 +23,7 @@ $('#drug-submit').on("click", function(event){
       // // div1.append("<h2>" + brand + "</h2> <br>");s
       // div1.append($('</div>'));
       // $('.test1').append(div1);
-      displayInfo(searchArray);
+      displayInfo();
       $("#drug").val('');
   });
     $("#drugChoice").show();
@@ -33,56 +33,58 @@ $('#drug-submit').on("click", function(event){
 
 $('#drugChoice').on("click", function(event){
   console.log('you clicked me');
-  console.log(searchArray[0].brand);
-  console.log(searchArray[1].brand);
-  console.log(searchArray);
+  // console.log(searchArray[0].brand);
+  // console.log(searchArray[1].brand);
+  // console.log(searchArray);
 
   event.preventDefault();
   $.ajax({
-    url: '/interactions',
+    // data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand},
+    url: '/interactions?med1_name=' + searchArray[0].brand + "&med2_name=" + searchArray[1].brand,
+     // url: '/interactions',
     method: "GET",
-    dataType: 'text',
+    // dataType: 'text',
     cache: false,
-    async: true,
+    // async: true,
     error : function(request,error)
     {
       alert("Request: "+JSON.stringify(request));
     }
-    // , data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand}
   }).done(function(resp){
-    console.log('hi');
-    // console.log(resp);
-    var divInteractions = $('<div class="drugInteractions col-md-12">');
-    // divInteractions.append("<h2> this is a test</h2");
+    console.log(resp);
+    // var test = resp;
+    // var test2 = test.replace('{"interactionsResult":"', "").replace('"}', '').replace(/(\n)+/g,'');
+    // console.log(test2);
+    // console.log(test);
+    // $('.drugInteractions').empty();
+    var divInteractions = $('<div class="drugInteractions container ">');
+    divInteractions.html("<h3>Interactions: "+ resp.interactionsResult + "</h3");
     divInteractions.append('</div>');
     $('.InteractionsResults').append(divInteractions);
   });
 });
 
-function displayInfo(searchArray) {
-  // if (searchArray.length === 2){
-  //   searchArray.shift();
-  // };
+function displayInfo() {
   $('.test1').empty();
 
-    var last = searchArray.length - 1;
-    var next = searchArray.length -2;
+  var last = searchArray.length - 1;
+  var next = searchArray.length -2;
 
-      var div1 = $('<div class="test2 col-md-6">');
-      div1.append("<h2>Brand Name: " + searchArray[last].brand + "</h2>");
-      div1.append("<h4>Generic Name: " + searchArray[last].generic + "</h4>");
-      div1.append("<h4>Indications: " + searchArray[last].Indication + "</h4>");
-      // div1.append("<h2>" + brand + "</h2> <br>");s
-      div1.append($('</div>'));
-      $("#drug").val('');
-      $('.test1').append(div1);
+  var div1 = $('<div class="test2 col-md-6">');
+  div1.append("<h2>Brand Name: " + searchArray[last].brand + "</h2>");
+  div1.append("<h4>Generic Name: " + searchArray[last].generic + "</h4>");
+  div1.append("<h4>Indications: " + searchArray[last].Indication + "</h4>");
+  // div1.append("<h2>" + brand + "</h2> <br>");s
+  div1.append($('</div>'));
+  $("#drug").val('');
+  $('.test1').append(div1);
 
-      var div1 = $('<div class="test2 col-md-6">');
-      div1.append("<h2>Brand Name: " + searchArray[next].brand + "</h2>");
-      div1.append("<h4>Generic Name: " + searchArray[next].generic + "</h4>");
-      div1.append("<h4>Indications: " + searchArray[next].Indication + "</h4>");
-      // div1.append("<h2>" + brand + "</h2> <br>");s
-      div1.append($('</div>'));
-      $('.test1').append(div1);
-      $("#drug").val('');
+  var div1 = $('<div class="test2 col-md-6">');
+  div1.append("<h2>Brand Name: " + searchArray[next].brand + "</h2>");
+  div1.append("<h4>Generic Name: " + searchArray[next].generic + "</h4>");
+  div1.append("<h4>Indications: " + searchArray[next].Indication + "</h4>");
+  // div1.append("<h2>" + brand + "</h2> <br>");s
+  div1.append($('</div>'));
+  $('.test1').append(div1);
+  $("#drug").val('');
 };
