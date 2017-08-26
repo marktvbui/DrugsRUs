@@ -37,6 +37,9 @@ module.exports = function(app) {
     db.User.findAll({
       include: {
         model: db.Medicine
+      },
+      include: {
+        model: db.Interactions
       }
     }).then(function(data){
       console.log(data);
