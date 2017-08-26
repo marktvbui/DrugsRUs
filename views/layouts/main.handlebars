@@ -1,19 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="859577265092-qgpnim2fks7lbd6s086vsm8uf3c0pppo.apps.googleusercontent.com">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-      <!-- Main app CSS -->
-      <link rel="stylesheet" type="text/css" href="public/assets/css/style.css">
-      <!-- Custom Fonts -->
-      <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Main app CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/userStyle.css">
+    <link rel="stylesheet" href="/assets/js/alertify.js-0.3.11/themes/alertify.core.css" />
+    <link rel="stylesheet" href="/assets/js/alertify.js-0.3.11/themes/alertify.default.css" />
 
-      <title>DrugsRUs</title>
-  </head>
+    <!-- Custom Fonts -->
 
-  <body>
-  	{{{ body }}}
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  </body>
+<!--     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+
+    <title>DrugsRUs</title>
+<!--     <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+<!-- <a class="g-signout" href="" style="display: none;" onclick="signOut();">Sign out</a> -->
+</head>
+
+<body>
+    {{{ body }}}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/assets/js/authentication.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/assets/js/drugs.js" charset="utf-8"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="/assets/js/alertify.js-0.3.11/lib/alertify.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+
 </html>
+
+<script>
+    $(".g-signin2").click(function() {
+        // $(".g-signin2").hide();
+        $(".g-signout").show();
+    });
+    function reset() {
+        $("#toggleCSS").attr("href", "../themes/alertify.default.css");
+        alertify.set({
+            labels: {
+                ok: "OK",
+                cancel: "Cancel"
+            },
+            delay: 5000,
+            buttonReverse: false,
+            buttonFocus: "ok"
+        });
+    }
+    // Custom Properties
+    $("#drug-submit").on('click', function() {
+        reset();
+        alertify.set({
+            delay: 3000
+        });
+        alertify.log("Searching for Drug . . .");
+        return false;
+    });
+    $("#drugChoice").on('click', function() {
+        reset();
+        alertify.set({
+            delay: 3000
+        });
+        alertify.log("Comparing drug interactions :D");
+        return false;
+    });
+    // var type = 'brand_name:' //change this to either brand_name or generic_name depending on the searchto be performed.
+    // var med = 'Tylenol'; //this is the term (brand or generic) to be searched
+    // var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
+    //
+    // // console.log(queryURL);
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).done(function(response) {
+    //   // console.log(response);
+    //   console.log("Brand: " + response.results[0].openfda.brand_name[0]);
+    //   console.log("Generic: " + response.results[0].openfda.generic_name[0]);
+    //   console.log("Description: " + response.results[0].description[0]);
+    //   // console.log("Interactions: " + response.results[0].drug_interactions[0]);
+    //   console.log("Indication: " + response.results[0].indications_and_usage[0]);
+    // });
+  //   // below code is server side authentication for user
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open('POST', '/');
+  //   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  //   xhr.onload = function() {
+  //   console.log('Signed in as: ' + xhr.responseText);
+  //   };
+  //   console.log(xhr);
+  //   xhr.send('idtoken=' + id_token + 'name=' + name + 'email=' + email);
+  // }
+  // function signOut() {
+  //   var auth2 = gapi.auth2.getAuthInstance();
+  //   auth2.signOut().then(function() {
+  //     console.log('User signed out.');
+  //   });
+  // }
+</script>

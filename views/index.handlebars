@@ -1,12 +1,17 @@
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+<a class="g-signout" href="" onclick="signOut();">Sign out</a>
+
+
 <div class="container">
   <div class="row">
+    <img src="/assets/img/pillbox4.jpg" alt="pillbox" id="pillbox4">
     <div id="user-search">
       <div class="input-group col-md-12">
-        <form method="get" action="/searchResults">
+        <form method="get" action="/">
           <h2 id="text">SEARCH FOR DRUG:</h2>
-            <input type="text" id="searchTextbox" name="searchdrug" placeholder=" Search..." required="">
+            <input class="text" id="drug" name="drugsearch" placeholder=" Search for brand name. Ex: 'Motrin'" required="">
             <!-- <input type="submit" name="search" value="Search" id="searchButton"> -->
-            <button type="submit" class="btn btn-info">
+            <button type="drug-submit" id="drug-submit" class="btn btn-info">
               <span class="glyphicon glyphicon-search"></span>
             </button>
             </span>
@@ -15,3 +20,29 @@
     </div>
   </div>
 </div>
+
+  <div class="test1 container">
+  </div>
+  <div class="test99 container">
+  </div>
+  <div class="InteractionsResults container col-md-12">
+  {{#each Interactions}}
+  {{log this}}
+  {{this}}
+  {{/each}}
+
+  {{#each interactionsResult}}
+  {{this}}
+  {{/each}}
+
+  {{#each interactions}}
+  {{log this}}
+  {{this}}
+  {{/each}}
+  </div>
+
+
+    <div style="text-align: center">
+      <button type="button" id="drugChoice" style="display: none;">COMPARE</button>
+    </div>
+

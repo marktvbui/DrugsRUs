@@ -1,5 +1,5 @@
 # DrugsRUs
-WebApp that checks drug to drug compatibility
+WebApp that checks drug to drug interactions
 
 Back End Team:
 Mark Bui - https://github.com/marktvbui

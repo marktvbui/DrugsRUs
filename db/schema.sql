@@ -1,6 +1,19 @@
-DROP TABLE IF EXISTS '';
 
-CREATE TABLE '' (
-  id int(10) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-)
+CREATE DATABASE drugs_db;
+
+USE drugs_db;
+
+CREATE TABLE users(
+  id INT NOT NULL AUTO_INCREMENT,
+  user_name VARCHAR(150) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  createdAt DATETIME,
+  updatedAt DATETIME,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE medicine(
+id INT NOT NULL AUTO_INCREMENT,
+medicine_name VARCHAR(150) NOT NULL,
+PRIMARY KEY(id)
+);

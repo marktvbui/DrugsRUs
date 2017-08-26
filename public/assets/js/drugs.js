@@ -16,13 +16,6 @@ $('#drug-submit').on("click", function(event){
       var generic = response.results[0].openfda.generic_name[0];
       var Indication = response.results[0].indications_and_usage[0];
       searchArray.push({'brand': brand, 'generic': generic, 'Indication': Indication});
-      // var div1 = $('<div class="test2 col-md-6">');
-      // div1.append("<h2>Brand Name: " + brand + "</h2>");
-      // div1.append("<h4>Generic Name: " + generic + "</h4>");
-      // div1.append("<h4>Indications: " + Indication + "</h4>");
-      // // div1.append("<h2>" + brand + "</h2> <br>");s
-      // div1.append($('</div>'));
-      // $('.test1').append(div1);
       displayInfo();
       $("#drug").val('');
   });
@@ -33,9 +26,6 @@ $('#drug-submit').on("click", function(event){
 
 $('#drugChoice').on("click", function(event){
   console.log('you clicked me');
-  // console.log(searchArray[0].brand);
-  // console.log(searchArray[1].brand);
-  // console.log(searchArray);
 
   event.preventDefault();
   $.ajax({
@@ -43,7 +33,6 @@ $('#drugChoice').on("click", function(event){
     url: '/interactions?med1_name=' + searchArray[0].brand + "&med2_name=" + searchArray[1].brand,
      // url: '/interactions',
     method: "GET",
-    // dataType: 'text',
     cache: false,
     // async: true,
     error : function(request,error)
@@ -52,13 +41,9 @@ $('#drugChoice').on("click", function(event){
     }
   }).done(function(resp){
     console.log(resp);
-    // var test = resp;
-    // var test2 = test.replace('{"interactionsResult":"', "").replace('"}', '').replace(/(\n)+/g,'');
-    // console.log(test2);
-    // console.log(test);
-    // $('.drugInteractions').empty();
+    $('.drugInteractions').empty();
     var divInteractions = $('<div class="drugInteractions container ">');
-    divInteractions.html("<h3>Interactions: "+ resp.interactionsResult + "</h3");
+    divInteractions.html("<h3>Interactions: "+ resp + "</h3");
     divInteractions.append('</div>');
     $('.InteractionsResults').append(divInteractions);
   });
