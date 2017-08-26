@@ -42,7 +42,6 @@ module.exports = function(app) {
         model: db.Interactions
       }
     }).then(function(data){
-      console.log(data);
       var userObj = {
         User: data
       };

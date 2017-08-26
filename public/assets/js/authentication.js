@@ -15,7 +15,7 @@
               email: email },
       async: false,
       success: function(data) {
-        console.log('message', + data.message);
+        // console.log('message', + data.message);
       }
       // ,
       // error: function(jqXHR, textStatus, err) {

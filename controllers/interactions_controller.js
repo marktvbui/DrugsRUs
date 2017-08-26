@@ -2,27 +2,26 @@ var db = require('../models');
 
 module.exports = function(app) {
   app.get('/interactions', function(req, res) {
+    var med1 = 'Monopril';
+    var med2 = 'Klorvess';
     console.log('interactions controller hit');
-    console.log(req.body);
     db.Interactions.findAll({
       where : {
-        med1_name: req.body.med1_name,
-        med2_name: req.body.med2_name
+        med1_name: med1,
+        med2_name: med2
       }
     }).then(function(results) {
-      var interactionsResult = results;
+      console.log('++++++++++++++++++++++++');
+      console.log(results[0].dataValues.interaction);
       // return interactionsResult;
+      var interactionsResult;
       var interactions = {
-        interactionResults: results.interactions
+        interactionsResult: results
       };
-      return interactionsResult;
-      // db.Medicine.findAll({}).then(function(results){
-      //   console.log(results);
-      //   var hbsObject = {
-      //   Medicine: results
-      // };
-        // res.render('user', interactions); this works to send the user info over
-        res.render('/', interactions);
+      console.log('------------------------');
+      console.log(interactions);
+
+        res.render('index', interactions);
     });
   });
 };
