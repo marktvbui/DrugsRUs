@@ -39,9 +39,9 @@ $('#drugChoice').on("click", function(event){
 
   event.preventDefault();
   $.ajax({
-    data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand},
-    // url: '/interactions?med1_name=' + searchArray[0].brand + "&med2_name=" + searchArray[1].brand,
-     url: '/interactions',
+    // data: {data:"med1_name=" + searchArray[0].brand + "med2_name=" + searchArray[1].brand},
+    url: '/interactions?med1_name=' + searchArray[0].brand + "&med2_name=" + searchArray[1].brand,
+     // url: '/interactions',
     method: "GET",
     // dataType: 'text',
     cache: false,
