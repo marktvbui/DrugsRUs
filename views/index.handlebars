@@ -21,49 +21,28 @@
   </div>
 </div>
 
-<!-- <div class="row">
- -->  <!-- <div class="col-sm-8 col-sm-offset-2" style="display: none;"> -->
-<!--   <div class="col-md-8 col-md-offset-2" id="druginfo" style="display: none;">
-    <h2>Drug Information:</h2>
-    <hr> -->
-  <div class="test1">
-<!--     <div class="test2 col-md-6"></div>
- --><!--     <div class="border col-md-6" id="druginput1"></div>
-    <div class="border col-md-6" id="druginput2"></div> -->
+  <div class="test1 container">
   </div>
-<!--     <hr>
-  <div class="border col-md-12">
-    <div class="drug-area" id="druginteractions"></div> -->
-
-    <!-- <div class="drugcheck">
-      <div id="drugcheck_found" style="display: none;">
-        <div id="drugcheck_list" style="display: none;">
-          <h4 class="contraindicated">Drug Check</h4>
-          <ul id="drugcheck_dc"> </ul>
-        </div>
-        <div id="generalinfo" style="display: none;">
-          <h4 class="general">General Info</h4>
-          <ul id="generalinfo_dc"> </ul>
-        </div>
-        <div id="validatorinfo" style="display: none;">
-          <h4 class="validator">Validator</h4>
-          <ul id="validatorinfo_dc"> </ul>
-        </div>
-        <div id="warninginfo" style="display: none;">
-          <h4 class="warning">Warning</h4>
-          <ul id="warninginfo_dc"> </ul> -->
-<!--     </div>
+  <div class="test99 container">
   </div>
-</div> -->
+  <div class="InteractionsResults container col-md-12">
+  {{#each Interactions}}
+  {{log this}}
+  {{this}}
+  {{/each}}
 
-<!--     <div style="text-align: center">
-      <button type="button" id="drugChoice" style="display: none;">COMPARE</button> -->
-      <!-- <button type="button" id="drugChoice">COMPARE</button> -->
-<!--       <div id="Content">
-    <div class="divider"/>
-      <button type="button" id="drugPrescription" style="display: none;">COMPARE DRUG <br> WITH YOUR PRESCRIPTION</button>
-    </div> -->
-<!--   </div>
-</div>
-</div>
-</div> -->
+  {{#each interactionsResult}}
+  {{this}}
+  {{/each}}
+
+  {{#each interactions}}
+  {{log this}}
+  {{this}}
+  {{/each}}
+  </div>
+
+
+    <div style="text-align: center">
+      <button type="button" id="drugChoice" style="display: none;">COMPARE</button>
+    </div>
+
