@@ -1,4 +1,6 @@
 //input drug #1 into search bar and append API info to first column
+var searchArray = [];
+
 $('#drug-submit').on("click", function(event){
   event.preventDefault();
   // var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
@@ -8,27 +10,46 @@ $('#drug-submit').on("click", function(event){
   var searchTerm = $(input).val();
   var med = searchTerm;
   var queryURL = "https://api.fda.gov/drug/label.json?api_key=KyKEcTqedZfpcgwkn5LpZryaZBCkRWJaU9215u08&search=" + type + med;
+  searchArray.push(med);
+  console.log(searchArray);
+  for (i = searchArray.length; i > (searchArray.length - 2); i--) {
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).done(function(response) {
+      // console.log(response);
+      console.log(response.results[0]);
+      // console.log("Brand: " + response.results[0].openfda.brand_name[0]);
+      // console.log("Generic: " + response.results[0].openfda.generic_name[0]);
+      // console.log("Description: " + response.results[0].description[0]);
+      // console.log("Interactions: " + response.results[0].drug_interactions[0]);
+      // console.log("Indication: " + response.results[0].indications_and_usage[0]);
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).done(function(response) {
-    // console.log(response);
-    console.log("Brand: " + response.results[0].openfda.brand_name[0]);
-    console.log("Generic: " + response.results[0].openfda.generic_name[0]);
-    // console.log("Description: " + response.results[0].description[0]);
-    // console.log("Interactions: " + response.results[0].drug_interactions[0]);
-    console.log("Indication: " + response.results[0].indications_and_usage[0]);
-  });
+      // self note...store into an array, loop through array and only show most recent 2 elements
+      // for (i = searchArray.length; i > (searchArray.length - 2); i--;) {
+        var brand = response.results[0].openfda.brand_name[0];
+        var generic = response.results[0].openfda.generic_name[0];
+        var Indication = response.results[0].indications_and_usage[0];
+
+        var div1 = $('<div class="test2 col-md-6">');
+        div1.append("<h2>" + brand + "</h2>");
+        div1.append("<h5>" + generic + "</h5>");
+        div1.append("<h5>" + Indication + "</h5>");
+        // div1.append("<h2>" + brand + "</h2> <br>");s
+        div1.append($('</div>'));
+        $('.test1').append(div1);
+        $("#drug").val('');
+    });
+  };
   // var text = "";
   // var input = $('#drug');
   // var textLocation = $(input).val();
 
-  var div1 = $('<div class="test2 col-md-6">');
-  div1.append("<h2>" + med + "</h2>");
-  div1.append($('</div>'));
-  $('.test1').append(div1);
-  $("#drug").val();
+  // var div1 = $('<div class="test2 col-md-6">');
+  // div1.append("<h2>" + med + "</h2>");
+  // div1.append($('</div>'));
+  // $('.test1').append(div1);
+  // $("#drug").val();
 });
 
 //input drug #1 into search bar and append API info to first column
