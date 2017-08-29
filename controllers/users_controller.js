@@ -30,6 +30,10 @@ module.exports = function(app) {
       include: {
         model: db.Medicine
       }
+      // ,
+      // include: {
+      //   model: db.Interactions
+      // }
     }).then(function(data){
         res.send(data);
       // });
