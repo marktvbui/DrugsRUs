@@ -16,9 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Medicine.associate = function(models) {
     Medicine.belongsTo(models.User, {
-     foreignKey: {
-      allowNull: false
-     }
+      onDelete: 'cascade'
     });
   };
 
