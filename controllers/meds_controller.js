@@ -12,11 +12,6 @@ module.exports = function(app) {
 
   app.post('/medicine', function(req, res) {
     db.Medicine.create(
-      // [
-      // 'medicine'
-      // ], [
-      // req.body.medicine_name
-      // ],
       { medicine_name: req.body.medicine_name },
       function() {
         res.redirect('/');

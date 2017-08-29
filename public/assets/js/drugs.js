@@ -1,4 +1,3 @@
-//input drug #1 into search bar and append API info to first column
 var searchArray = [];
 
 $('#drug-submit').on("click", function(event){
@@ -38,7 +37,7 @@ $('#drugChoice').on("click", function(event){
       alert("Request: "+JSON.stringify(request));
     }
   }).done(function(resp){
-    console.log(resp);
+    // console.log(resp);
     var divInteractions = $('<div class="drugInteractions container ">');
     divInteractions.html("<h3 class='drugInteracts'>Interactions: "+ resp + "</h3");
     divInteractions.append('</div>');
